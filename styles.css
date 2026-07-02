@@ -78,25 +78,25 @@ svg{display:block}
 #cursor,#cursor-follower{display:none}
 body.has-cursor #cursor{
   display:flex;align-items:center;justify-content:center;position:fixed;
-  width:10px;height:10px;border-radius:50%;background:var(--pink);
+  width:11px;height:11px;border-radius:50%;background:var(--pink);
   pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
   mix-blend-mode:difference;transition:width .3s var(--ease),height .3s var(--ease);
 }
-body.has-cursor #cursor-follower{
+/*body.has-cursor #cursor-follower{
   display:flex;align-items:center;justify-content:center;position:fixed;
   width:40px;height:40px;border-radius:50%;border:1px solid var(--border-strong);
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .35s var(--ease),height .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease);
-}
-.cursor-label{
+}*/
+/*.cursor-label{
   font-size:0;opacity:0;font-weight:700;letter-spacing:.04em;color:#fff;white-space:nowrap;
   transition:opacity .25s var(--ease),font-size .25s var(--ease);
-}
+}*/
 body.has-cursor.cursor-active #cursor{width:0;height:0}
 body.has-cursor.cursor-active #cursor-follower{
-  width:104px;height:104px;background:linear-gradient(135deg,var(--violet),var(--pink));border-color:transparent;
+  width:18px;height:18px;background:linear-gradient(135deg,var(--violet),var(--pink));border-color:transparent;
 }
-body.has-cursor.cursor-active .cursor-label{font-size:12px;opacity:1}
+/*body.has-cursor.cursor-active .cursor-label{font-size:12px;opacity:1}*/
 
 /* ---------- Scroll progress ---------- */
 #scroll-progress{
