@@ -78,7 +78,7 @@ svg{display:block}
 #cursor,#cursor-follower{display:none}
 body.has-cursor #cursor{
   display:flex;align-items:center;justify-content:center;position:fixed;
-  width:11px;height:11px;border-radius:50%;background:var(--pink);
+  width:12px;height:12px;border-radius:50%;background:var(--pink);
   pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
   mix-blend-mode:difference;transition:width .3s var(--ease),height .3s var(--ease);
 }
@@ -92,7 +92,7 @@ body.has-cursor #cursor{
   font-size:0;opacity:0;font-weight:700;letter-spacing:.04em;color:#fff;white-space:nowrap;
   transition:opacity .25s var(--ease),font-size .25s var(--ease);
 }*/
-body.has-cursor.cursor-active #cursor{width:0;height:0}
+body.has-cursor.cursor-active #cursor{width:12;height:12}
 body.has-cursor.cursor-active #cursor-follower{
   width:18px;height:18px;background:linear-gradient(135deg,var(--violet),var(--pink));border-color:transparent;
 }
