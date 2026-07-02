@@ -92,7 +92,7 @@ body.has-cursor #cursor{
   font-size:0;opacity:0;font-weight:700;letter-spacing:.04em;color:#fff;white-space:nowrap;
   transition:opacity .25s var(--ease),font-size .25s var(--ease);
 }*/
-body.has-cursor.cursor-active #cursor{width:12;height:12}
+body.has-cursor.cursor-active #cursor{width:12px;height:12px}
 body.has-cursor.cursor-active #cursor-follower{
   width:18px;height:18px;background:linear-gradient(135deg,var(--violet),var(--pink));border-color:transparent;
 }
