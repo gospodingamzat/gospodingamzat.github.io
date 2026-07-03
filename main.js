@@ -85,17 +85,24 @@
           obs.unobserve(entry.target);
         });
       },
-      { threshold: 0.15 }
+      {
+    threshold: 0,
+    rootMargin: "0px 0px -15% 0px"}
     );
     revealEls.forEach((el) => revealObserver.observe(el));
   }
 
   /* ===== CUSTOM CURSOR with contextual label ===== */
-  if (fine && !reduceMotion) {
-    document.body.classList.add('has-cursor');
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
-    const label = follower.querySelector('.cursor-label');
+  if (fine) {
+  document.body.classList.add('has-cursor');
+
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursor-follower');
+  const label = follower?.querySelector('.cursor-label');
+
+  if (!cursor || !follower) {
+    console.warn('Cursor elements missing');
+  } else {
     let mx = 0, my = 0, fx = 0, fy = 0;
 
     document.addEventListener('mousemove', (e) => {
@@ -108,18 +115,25 @@
     document.addEventListener('mouseover', (e) => {
       const cursorTarget = e.target.closest('[data-cursor]');
       const active = e.target.closest('a, button, .gallery-item, .tab');
+
       document.body.classList.toggle('cursor-active', !!active);
-      label.textContent = cursorTarget ? cursorTarget.dataset.cursor : '';
+
+      if (label) {
+        label.textContent = cursorTarget ? cursorTarget.dataset.cursor : '';
+      }
     });
 
-    (function tick() {
+    function tick() {
       fx += (mx - fx) * 0.14;
       fy += (my - fy) * 0.14;
       follower.style.left = fx + 'px';
       follower.style.top = fy + 'px';
       requestAnimationFrame(tick);
-    })();
+    }
+
+    tick();
   }
+}
 
   /* ===== HERO MESH PARALLAX ===== */
   if (fine && !reduceMotion) {
@@ -131,7 +145,8 @@
       const py = (e.clientY - r.top) / r.height - 0.5;
       blobs.forEach((b, i) => {
         const strength = (i + 1) * 14;
-        b.style.translate = `${(px * strength).toFixed(1)}px ${(py * strength).toFixed(1)}px`;
+        b.style.setProperty('--mx', `${(px * strength).toFixed(1)}px`);
+        b.style.setProperty('--my', `${(py * strength).toFixed(1)}px`);
       });
     });
   }
@@ -156,7 +171,7 @@
   }
 
   /* ===== TILT CARDS ===== */
-  if (fine && !reduceMotion) {
+  if (fine) {
     document.querySelectorAll('.tilt').forEach((el) => {
       el.addEventListener('mousemove', (e) => {
         const r = el.getBoundingClientRect();
@@ -238,7 +253,7 @@
   const reel = document.getElementById('reel');
   if (reel) {
     reel.innerHTML += reel.innerHTML;
-    if (reduceMotion) reel.style.animation = 'none';
+    
   }
 
 /* ===== INERTIAL SCROLL MARQUEE ===== */
